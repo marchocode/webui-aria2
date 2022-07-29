@@ -12,13 +12,13 @@ ADD ./docs /webui-aria2
 
 # gosu install latest
 RUN GITHUB_REPO="https://github.com/tianon/gosu" \
-  && LATEST=`curl -s  $GITHUB_REPO"/releases/latest" | grep -Eo "[0-9].[0-9]*"` \
+  && LATEST="1.14" \
   && curl -L $GITHUB_REPO"/releases/download/"$LATEST"/gosu-amd64" > /usr/local/bin/gosu \
   && chmod +x /usr/local/bin/gosu
 
 # goreman supervisor install latest
 RUN GITHUB_REPO="https://github.com/mattn/goreman" \
-  && LATEST=`curl -s  $GITHUB_REPO"/releases/latest" | grep -Eo "v[0-9]*.[0-9]*.[0-9]*"` \
+  && LATEST="v0.3.13" \
   && curl -L $GITHUB_REPO"/releases/download/"$LATEST"/goreman_"$LATEST"_linux_amd64.tar.gz" > goreman.tar.gz \
   && tar xvf goreman.tar.gz && mv /goreman*/goreman /usr/local/bin/goreman && rm -R goreman*
 
